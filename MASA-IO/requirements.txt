@@ -1,0 +1,6 @@
+# requirements.txt for pyivasmasa_io
+#
+# Copyright (C) 2024 Nokia Technologies Ltd.
+# See LICENSE.md for license.
+#
+numpy

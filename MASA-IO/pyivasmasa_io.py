@@ -6,7 +6,6 @@
   Copyright (C) 2024 Nokia Technologies Ltd.
   See LICENSE.md for license.
 """
-__version__ = '1.0.0'
 
 from functools import cache  # spherical index -> azi+ele caching
 import io
@@ -993,8 +992,14 @@ class PyIvasMasaIO:
                                                   dir2Meta=dir2_meta)
                         all_frames.append(frame_meta)
                         read_count += 1
-
+                    else:
+                        # problems parsing directional metadata
+                        break
+                else:
+                    # problems parsing descriptive metadata
+                    break
             else:
+                # problems reading format descriptor
                 break
 
         return all_frames

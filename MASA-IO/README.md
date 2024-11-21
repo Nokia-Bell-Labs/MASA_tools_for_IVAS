@@ -11,16 +11,44 @@ If you are using the code in a publication, please cite [^3].
 - Python >3.8. The development and testing has been done with version 3.11.
 - NumPy. The exact version should not be critical. The development and testing has been done with version 1.28.
 
-[`requirements.txt`](requirements.txt) is provided and can be used to install the dependencies, e.g., with Pipenv by
+[`requirements.txt`](requirements.txt) is provided and can be used to install the dependencies, e.g., with `pipenv` by
 ```shell
 pipenv install -r requirements.txt --python 3.11
 ```
 (or whatever Python version should be used).
 
-Or installing the dependencies into an existing virtual environment with Pip by
+Or installing the dependencies into an existing virtual environment with `pip` by
 ```shell
 pip install -r requirements.txt
 ```
+
+## Installing `pyivasmasa_io` as a library dependency
+- Installation manually using `pipenv` from a cloned repository:
+  ```shell
+  pipenv install /path/to/pyivasmasa-io
+  ```
+
+- Similarly, installation manually using `pip` from a cloned repository:
+  ```shell
+  pip install /path/to/pyivasmasa-io
+  ```
+  
+- Installing directly from [GitHub version](https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS/) with `pipenv` 
+  ```shell
+  pipenv install git+https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git#MASA-IO
+  ```
+
+- Similarly, installing directory using `pip`
+  ```shell
+  pip install -e git+https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git#MASA-IO
+  ```
+
+- Using the [GitHub version](https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS) as a dependency.
+  In the `Pipfile` file use the dependency
+  ```
+  [packages]
+  pyivasmasa_io = {git = "https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git", subdirectory = "MASA-IO"}
+  ```
 
 ## Usage
 ### Data structures

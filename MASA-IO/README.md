@@ -13,7 +13,7 @@ If you are using the code in a publication, please cite [^3].
 
 [`requirements.txt`](requirements.txt) is provided and can be used to install the dependencies, e.g., with `pipenv` by
 ```shell
-pipenv install -r requirements.txt --python 3.11
+pipenv install -r requirements.txt --python=3.11
 ```
 (or whatever Python version should be used).
 
@@ -25,22 +25,24 @@ pip install -r requirements.txt
 ## Installing `pyivasmasa_io` as a library dependency
 - Installation manually using `pipenv` from a cloned repository:
   ```shell
-  pipenv install /path/to/pyivasmasa-io
+  git clone https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git
+  pipenv install MASA_tools_for_IVAS/MASA-IO
   ```
 
 - Similarly, installation manually using `pip` from a cloned repository:
   ```shell
-  pip install /path/to/pyivasmasa-io
+  git clone https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git
+  pip install MASA_tools_for_IVAS/MASA-IO
   ```
   
 - Installing directly from [GitHub version](https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS/) with `pipenv` 
   ```shell
-  pipenv install git+https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git#MASA-IO
+  pipenv install "pyivasmasa_io @ git+https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git#subdirectory=MASA-IO"
   ```
 
-- Similarly, installing directory using `pip`
+- Similarly, installing directly using `pip`
   ```shell
-  pip install -e git+https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git#MASA-IO
+  pip install "pyivasmasa_io @ git+https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS.git#subdirectory=MASA-IO"
   ```
 
 - Using the [GitHub version](https://github.com/Nokia-Bell-Labs/MASA_tools_for_IVAS) as a dependency.

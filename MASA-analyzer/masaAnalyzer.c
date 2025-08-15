@@ -628,7 +628,7 @@ static void performSpatialAnalysis(AnalyzerData* data)
         data->generalCoherence[0] = meanCoherence;
 
         // Perform directional analysis
-        for (size_t dir = 0; dir < data->directionCount; dir++)
+        for (short dir = 0; dir < data->directionCount; dir++)
         {
             float*** analysisSigReal = NULL;
             float*** analysisSigImag = NULL;
@@ -729,7 +729,7 @@ static void performSpatialAnalysis(AnalyzerData* data)
         {
             data->surroundCoherence[sf][band] = 1.0f;
             float meanRatio = 0.0f;
-            for (size_t dir = 0; dir < data->directionCount; dir++)
+            for (short dir = 0; dir < data->directionCount; dir++)
             {
                 meanRatio += data->directToTotalRatio[dir][sf][band] / (float) data->directionCount;
             }
@@ -744,7 +744,7 @@ static void performSpatialAnalysis(AnalyzerData* data)
                 float energyDir[MASA_MAXIMUM_DIRECTIONS];
                 float energyNonDir[MASA_MAXIMUM_DIRECTIONS];
                 float totalEnergy = 0.0f;
-                for (size_t dir = 0; dir < data->directionCount; dir++)
+                for (short dir = 0; dir < data->directionCount; dir++)
                 {
                     energyDir[dir] = data->directToTotalRatio[dir][sf][band] * data->subframeEnergy[dir][band];
                     energyNonDir[dir] = (1.0f - data->directToTotalRatio[dir][sf][band]) * data->subframeEnergy[dir][band];
@@ -754,7 +754,7 @@ static void performSpatialAnalysis(AnalyzerData* data)
                 if (totalEnergy > 0.0f)
                 {
                     data->diffuseToTotalRatio[sf][band] = 1.0f;
-                    for (size_t dir = 0; dir < data->directionCount; dir++)
+                    for (short dir = 0; dir < data->directionCount; dir++)
                     {
                         data->directToTotalRatio[dir][sf][band] = energyDir[dir] / totalEnergy;
                         data->diffuseToTotalRatio[sf][band] -= data->directToTotalRatio[dir][sf][band];
@@ -763,7 +763,7 @@ static void performSpatialAnalysis(AnalyzerData* data)
                 else
                 {
                     data->diffuseToTotalRatio[sf][band] = 1.0f;
-                    for (size_t dir = 0; dir < data->directionCount; dir++)
+                    for (short dir = 0; dir < data->directionCount; dir++)
                     {
                         data->directToTotalRatio[dir][sf][band] = 0.0f;
                     }
@@ -884,7 +884,7 @@ static void createAnalysisSignals(AnalyzerData* data)
         }
 
         // Go to frequency domain
-        for (size_t n = 0; n < numberOfAnalysisChannels; n++)
+        for (short n = 0; n < numberOfAnalysisChannels; n++)
         {
             float sigTime[FRAME_SIZE];
             for (size_t m = 0; m < FRAME_SIZE; m++)
@@ -1150,7 +1150,7 @@ static void formSpatialMetadata(AnalyzerData* data)
     {
         for (size_t b = 0; b < MASA_BAND_COUNT; b++)
         {
-            for (size_t dir = 0; dir < data->directionCount; dir++)
+            for (short dir = 0; dir < data->directionCount; dir++)
             {
                 indexDirection(&(dirMeta[dir].directionIndex[sf][b]), data->elevation[dir][sf][b], data->azimuth[dir][sf][b], &(data->sphericalGridData));
                 dirMeta[dir].directToTotalRatio[sf][b] = (uint8_t) floorf(data->directToTotalRatio[dir][sf][b] * UINT8_MAX);
@@ -1166,7 +1166,7 @@ static void formSpatialMetadata(AnalyzerData* data)
             if (dirMeta[0].directToTotalRatio[sf][b] + dirMeta[1].directToTotalRatio[sf][b] + comMeta->diffuseToTotalRatio[sf][b] != UINT8_MAX)
             {
                 comMeta->diffuseToTotalRatio[sf][b] = UINT8_MAX;
-                for (size_t dir = 0; dir < data->directionCount; dir++)
+                for (short dir = 0; dir < data->directionCount; dir++)
                 {
                     comMeta->diffuseToTotalRatio[sf][b] -= dirMeta[dir].directToTotalRatio[sf][b];
                 }
